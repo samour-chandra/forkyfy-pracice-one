@@ -20,7 +20,9 @@ const controlRecipe = async function () {
     recipeView.loadSpinner();
     // get id from the hash change event
     const id = window.location.hash.slice(1);
+    if (!id) return recipeView.renderError(`Please frist search any recipe`);
     // load recipe from the load recipe
+    resultsView.update(modal.getPeginationResult());
     await modal.loadRecipe(id);
     // renderr the recipe
     recipeView.render(modal.state.recipe);
@@ -67,3 +69,5 @@ const init = function () {
   recipeView.handlupdateSurvings(controlServings);
 };
 init();
+
+console.log('hello wolrd');
