@@ -62,7 +62,9 @@ export const getPeginationResult = function (pages = state.search.page) {
 };
 
 export const upadateSurvings = function (newServings) {
-  state.recipe.ingredients.array.forEach(ing => {
-    ing.quantiy = (ing.quantiy * newServings) / state.recipe.quantiy;
+  state.recipe.ingredients.forEach(ing => {
+    ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
   });
+  console.log(state.recipe.ingredients);
+  state.recipe.servings = newServings;
 };

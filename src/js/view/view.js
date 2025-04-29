@@ -9,6 +9,8 @@ export default class view {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
+  update() {}
+
   loadSpinner() {
     const spinnerMarkup = `
         <div class="spinner">

@@ -55,16 +55,15 @@ const controlPagination = function (pages) {
   resultsView.render(modal.getPeginationResult(pages));
   paginationView.render(modal.state.search);
 };
+const controlServings = function (newServing) {
+  modal.upadateSurvings(newServing);
+  recipeView.render(modal.state.recipe);
+};
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipe);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.handlePagination(controlPagination);
+  recipeView.handlupdateSurvings(controlServings);
 };
 init();
-
-const controlServings = function () {};
-
-console.log('this is testin the modal function control recipe and other');
-
-console.log('were is the promt are not working');
