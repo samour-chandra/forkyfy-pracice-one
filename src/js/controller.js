@@ -57,7 +57,7 @@ const controlPagination = function (pages) {
 };
 const controlServings = function (newServing) {
   modal.upadateSurvings(newServing);
-  recipeView.render(modal.state.recipe);
+  recipeView.update(modal.state.recipe);
 };
 
 const init = function () {

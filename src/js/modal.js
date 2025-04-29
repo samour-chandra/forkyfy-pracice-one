@@ -65,6 +65,5 @@ export const upadateSurvings = function (newServings) {
   state.recipe.ingredients.forEach(ing => {
     ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
   });
-  console.log(state.recipe.ingredients);
   state.recipe.servings = newServings;
 };
