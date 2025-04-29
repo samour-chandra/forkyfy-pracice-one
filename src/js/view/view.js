@@ -2,7 +2,7 @@ export default class view {
   _errorMessage = 'we could not find the rcipe ! please try  again later';
   _data;
   render(data) {
-    // if (!data) return this.renderError;
+    if (!data || data.length === 0) return this.renderError();
     this._data = data;
     const markup = this._generateMarkup();
     this._clear();

@@ -2,12 +2,14 @@
 import { getJson } from './view/helper';
 
 // import the recipe url from the helper
-import { RECIPE_URL } from './config';
+import { RECIPE_URL, REICIPR_PER_PAGE } from './config';
 export const state = {
   state: {},
   search: {
     query: '',
     results: [],
+    page: 1,
+    resultsPerPage: REICIPR_PER_PAGE,
   },
 };
 
@@ -36,7 +38,6 @@ export const loadRecipe = async function (id) {
 export const loadSearchResults = async function (query) {
   try {
     const data = await getJson(`${RECIPE_URL}?search=${query}`);
-    console.log(data);
     state.search.results = data.data.recipes.map(ing => {
       return {
         id: ing.id,
@@ -51,3 +52,17 @@ export const loadSearchResults = async function (query) {
 };
 
 // loadSearchResults('pizza');
+
+export const getPeginationResult = function (pages = state.search.page) {
+  state.search.page = pages;
+
+  const startIndex = (pages - 1) * state.search.resultsPerPage;
+  const endIndex = pages * state.search.resultsPerPage;
+  return state.search.results.slice(startIndex, endIndex);
+};
+
+export const upadateSurvings = function (newServings) {
+  state.recipe.ingredients.array.forEach(ing => {
+    ing.quantiy = (ing.quantiy * newServings) / state.recipe.quantiy;
+  });
+};
